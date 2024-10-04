@@ -1,117 +1,99 @@
-# browser-extension-template
+# X Stream Chat
 
-[link-rgh]: https://github.com/sindresorhus/refined-github
-[link-ngh]: https://github.com/sindresorhus/notifier-for-github
-[link-hfog]: https://github.com/sindresorhus/hide-files-on-github
-[link-tsconfig]: https://github.com/sindresorhus/tsconfig
-[link-options-sync]: https://github.com/fregante/webext-options-sync
-[link-cws-keys]: https://github.com/fregante/chrome-webstore-upload-keys
-[link-amo-keys]: https://addons.mozilla.org/en-US/developers/addon/api/key
-
-> Cross-browser extension boilerplate - barebones template with Parcel 2, options handler and auto-publishing.
-
-Screenshot of extension options:
-
-![Sample extension options output](media/previewer.png)
+X Stream Chat is a browser extension that allows you to relay chat messages from X (formerly Twitter) broadcasts to a local WebSocket server. This enables you to display these messages in a customizable chat overlay for streaming purposes.
 
 ## Features
 
-- Uses Manifest v3
-- Use npm dependencies thanks to Parcel 2.
-- [Auto-syncing options](#auto-syncing-options).
-- [Auto-publishing](#publishing) with auto-versioning and support for manual releases.
+- Capture chat messages from X broadcasts in real-time
+- Relay messages to a local WebSocket server
+- Customizable chat display options
+- Status page to monitor connections and message flow
 
-## Getting started
+## Setup
 
-### 1️⃣ Create your own copy
+### Prerequisites
 
-1. Click [<kbd>Use this template</kbd>](https://github.com/fregante/browser-extension-template/generate) to make a copy of your own. 😉
+- Node.js (v14 or later recommended)
+- pnpm (recommended) or npm
+- A Chromium-based browser (e.g., Google Chrome, Microsoft Edge)
 
-Note: When you create a repository from the template, the [Template Cleanup](.github/workflows/template-cleanup.yml) workflow will be triggered to delete and edit template-specific resources. Wait a moment until the workflow finishes (you will see a commit pushed with 'Template cleanup' message).
+### Installation
 
-### 🛠 Build locally
+1. Clone this repository:
+   ```
+   git clone https://github.com/your-username/x-stream-chat.git
+   cd x-stream-chat
+   ```
 
-1. Checkout the copied repository to your local machine eg. with `git clone https://github.com/my-username/my-awesome-extension/`
-1. Run `npm install` to install all required dependencies
-1. Run `npm run build`
+2. Install dependencies using pnpm (recommended) or npm:
+   ```
+   pnpm install
+   # or
+   npm install
+   ```
 
-The build step will create the `distribution` folder, this folder will contain the generated extension.
+3. Build the extension:
+   ```
+   pnpm run build
+   # or
+   npm run build
+   ```
 
-### 🏃 Run the extension
+### Loading the Extension
 
-Using [web-ext](https://extensionworkshop.com/documentation/develop/getting-started-with-web-ext/) is recommended for automatic reloading and running in a dedicated browser instance. Alternatively you can load the extension manually (see below).
+#### For Users:
+1. Open your browser and navigate to `chrome://extensions`
+2. Enable "Developer mode" in the top right corner
+3. Click "Load unpacked" and select the `distribution` folder in the project directory
 
-1. Run `npm run watch` to watch for file changes and build continuously
-1. Run `npm install --global web-ext` (only only for the first time)
-1. In another terminal, run `web-ext run -t chromium`
-1. Check that the extension is loaded by opening the extension options ([in Firefox](media/extension_options_firefox.png) or [in Chrome](media/extension_options_chrome.png)).
+#### For Developers:
+Use `web-ext` for development and testing:
 
-#### Manually
+## Usage
 
-You can also [load the extension manually in Chrome](https://www.smashingmagazine.com/2017/04/browser-extension-edge-chrome-firefox-opera-brave-vivaldi/#google-chrome-opera-vivaldi) or [Firefox](https://www.smashingmagazine.com/2017/04/browser-extension-edge-chrome-firefox-opera-brave-vivaldi/#mozilla-firefox).
+1. Open the X Stream Chat extension popup by clicking on its icon in your browser toolbar.
 
-### ✏️ Make the first change
+2. Configure the settings:
+   - Enter the host and port for your WebSocket server (default: localhost:8585)
+   - Choose your preferred font and font size
+   - Select which elements to display (profile picture, username, handle, timestamp)
 
-1. For example, edit source\manifest.json to `"name": "My Awesome Extension",`
-1. Go back to your browser, reload and see the change take effect
+3. Click "Save" to apply your settings.
 
-Note: Firefox will automatically reload content scripts when the extension is updated, Chrome requires you to reload the page to reload the content scripts.
+4. Toggle the switch to enable the connection to the WebSocket server.
 
-### 📕 Read the documentation
+5. Navigate to an X broadcast page. The extension will automatically start capturing chat messages and sending them to your server.
 
-Here are some websites you should refer to:
+6. Open `http://localhost:8585` in a browser or add it as a browser source in your streaming software to display the chat overlay.
 
-- [Parcel’s Web Extension transformer documentation](https://parceljs.org/recipes/web-extension/)
-- [Chrome extensions’ API list](https://developer.chrome.com/docs/extensions/reference/)
-- A lot more links in my [Awesome WebExtensions](https://github.com/fregante/Awesome-WebExtensions) list
+## Development
 
-## Configuration
+- To watch for changes and rebuild the extension automatically:
+  ```
+  npm run watch
+  ```
 
-The extension doesn't target any specific ECMAScript environment or provide any transpiling by default. The extensions output will be the same ECMAScript you write. This allows us to always target the latest browser version, which is a good practice you should be following.
+- To run the extension in development mode with live reloading:
+  ```
+  npm run dev
+  ```
 
-### Parcel 2
+## Troubleshooting
 
-Being based on Parcel 2 and its [WebExtension transformer](https://parceljs.org/recipes/web-extension/), you get all the good parts:
+- If you're not seeing any messages, make sure:
+  1. The extension is enabled and connected (check the popup)
+  2. You're on an X broadcast page
+  3. The WebSocket server is running
+  4. Check the browser console for any error messages
 
-- Browserlist-based code transpiling (which defaults to just the latest Chrome and Firefox versions)
-- Automatically picks up any new file specified in `manifest.json`
-
-### Auto-syncing options
-
-Options are managed by [fregante/webext-options-sync][link-options-sync], which auto-saves and auto-restores the options form, applies defaults and runs migrations.
-
-### Publishing
-
-It's possible to automatically publish to both the Chrome Web Store and Mozilla Addons at once by adding these secrets on GitHub Actions:
-
-1. `CLIENT_ID`, `CLIENT_SECRET`, and `REFRESH_TOKEN` from [Google APIs][link-cws-keys].
-2. `WEB_EXT_API_KEY`, and `WEB_EXT_API_SECRET` from [AMO][link-amo-keys].
-
-Also include `EXTENSION_ID` in the secrets ([how to find it](https://stackoverflow.com/a/8946415/288906)) and add Mozilla’s [`gecko.id`](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/browser_specific_settings) to `manifest.json`.
-
-The GitHub Actions workflow will:
-
-1. Build the extension
-2. Create a version number based on the current UTC date time, like [`19.6.16`](https://github.com/fregante/daily-version-action) and sets it in the manifest.json
-3. Deploy it to both stores
-
-#### Auto-publishing
-
-Thanks to the included [GitHub Action Workflows](.github/workflows), if you set up those secrets in the repo's Settings, the deployment will automatically happen:
-
-- on a schedule, by default [every week](.github/workflows/release.yml) (but only if there are any new commits in the last tag)
-- manually, by clicking ["Run workflow"](https://github.blog/changelog/2020-07-06-github-actions-manual-triggers-with-workflow_dispatch/) in the Actions tab.
-
-## Credits
-
-Extension icon made by [Freepik](https://www.freepik.com) from [www.flaticon.com](https://www.flaticon.com) is licensed by [CC 3.0 BY](http://creativecommons.org/licenses/by/3.0).
-
-## Extensions created using this template
-
-- [notlmn/copy-as-markdown](https://github.com/notlmn/copy-as-markdown) - Browser extension to copy hyperlinks, images, and selected text as Markdown.
+- To view the extension's background script logs:
+  1. Go to `chrome://extensions`
+  2. Find X Stream Chat and click on "background page" under "Inspect views"
 
 ## License
 
-This browser extension template is released under [CC0](#license) and mentioned below. There is no `license` file included in here, but when you clone this template, you should include your own license file for the specific license you choose to use.
+[MIT License](LICENSE)
 
-[![CC0](https://mirrors.creativecommons.org/presskit/buttons/88x31/svg/cc-zero.svg)](https://creativecommons.org/publicdomain/zero/1.0/)
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.

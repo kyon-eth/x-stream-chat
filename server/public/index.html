@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>X Stream Chat</title>
+    <link rel="stylesheet" href="/css/chat.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div id="messages" class="messages-container"></div>
+    </div>
+
+    <script>
+      const messagesContainer = document.getElementById("messages");
+      const socket = new WebSocket("ws://localhost:{{PORT}}");
+
+      const MESSAGE_HEIGHT = 40; 
+      const CONTAINER_HEIGHT = 400;
+      const MAX_MESSAGES = Math.floor(CONTAINER_HEIGHT / MESSAGE_HEIGHT);
+
+      socket.onmessage = (event) => {
+        const messages = JSON.parse(event.data);
+        messages.forEach((message) => addMessage(message));
+      };
+
+      socket.onerror = (error) => {
+        console.error("WebSocket error:", error);
+      };
+
+      socket.onclose = () => {
+        console.log("WebSocket connection closed");
+      };
+
+      let messageHeight = 0;
+
+      messagesContainer.style.height = `${window.innerHeight}px`;
+
+      window.addEventListener("resize", () => {
+        messagesContainer.style.height = `${window.innerHeight}px`;
+      });
+
+      function addMessage(message) {
+        const messageElement = document.createElement("div");
+        messageElement.className = "message";
+
+        // Message Text
+        const messageText = document.createElement("span");
+        messageText.className = "message-text";
+        messageText.textContent = message.message;
+
+        // User Info
+        const userInfo = document.createElement("span");
+        userInfo.className = "user-info";
+
+        // Username
+        const username = document.createElement("span");
+        username.className = "username";
+        username.textContent = message.username;
+
+        // Handle
+        const handle = document.createElement("span");
+        handle.className = "handle";
+        handle.textContent = `@${message.userHandle}`;
+
+        // Timestamp
+        const timestamp = document.createElement("span");
+        timestamp.className = "timestamp";
+        timestamp.textContent = new Date(
+          message.timestamp,
+        ).toLocaleTimeString();
+
+        // Avatar
+        const avatar = document.createElement("img");
+        avatar.src = message.pfp || "https://via.placeholder.com/24";
+        avatar.alt = `${message.username}'s profile picture`;
+
+        userInfo.appendChild(avatar);
+        userInfo.appendChild(username);
+        // Uncomment if you want to show handle or timestamp
+        // userInfo.appendChild(handle);
+        // userInfo.appendChild(timestamp);
+
+        messageElement.appendChild(userInfo);
+        messageElement.appendChild(messageText);
+
+        // Add the new message at the bottom
+        messagesContainer.appendChild(messageElement);
+
+        if (messageHeight === 0) {
+          messageHeight = document.querySelector(".message").offsetHeight;
+        }
+
+        // Scroll to the bottom
+        const scrollHeight = messagesContainer.scrollHeight;
+        const clientHeight = messagesContainer.clientHeight;
+        const currentScrollTop = messagesContainer.scrollTop;
+        const scrollDistance = scrollHeight - clientHeight - currentScrollTop;
+
+        if (scrollDistance > 0) {
+            messagesContainer.scrollTop += scrollDistance;
+        }
+
+        // If exceeding max messages, remove the oldest ones with animation
+        if (messagesContainer.childElementCount > MAX_MESSAGES) {
+          const oldestMessage = messagesContainer.firstChild;
+          oldestMessage.style.opacity = "0";
+          oldestMessage.style.transform = "translateY(-20px)";
+          oldestMessage.style.transition = "opacity 0.3s, transform 0.3s";
+          setTimeout(() => {
+            messagesContainer.removeChild(oldestMessage);
+          }, 150); // Duration matches the transition
+        }
+      }
+    </script>
+  </body>
+</html>

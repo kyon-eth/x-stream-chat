@@ -1,0 +1,112 @@
+/* Reset some default styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: transparent; /* Transparent background for OBS overlay */
+    color: #FFFFFF;
+    margin: 0;
+    padding: 0;
+}
+
+/* Chat Overlay Container */
+.container {
+    position: fixed;
+    width: 100%;
+    min-width: 100%;
+    min-height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    border: 2px solid #9147ff;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column-reverse;
+    z-index: 1000;
+}
+
+/* Messages Container */
+#messages {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    height: 100%; /* Set height to fill the container */
+    overflow-y: auto; /* Enable scrolling when messages exceed height */
+    scroll-behavior: smooth; /* Smooth scrolling for new messages */
+    margin-bottom: 30px;
+}
+
+/* Individual Message */
+.message {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 10px;
+    background: rgba(255, 255, 255, 0.1); /* Slight background for message readability */
+    border-radius: 5px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: slideUp 0.2s forwards;
+}
+
+/* Slide-Up Animation */
+@keyframes slideUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Message Content */
+.message-text {
+    flex: 1;
+    text-align: left;
+    color: #FFFFFF;
+    font-size: 0.95em;
+    word-wrap: break-word;
+    width: 75%;
+    margin-left: 6px;
+}
+
+/* User Info */
+.user-info {
+    display: flex;
+    align-items: center;
+    text-align: right;
+    margin-left: 10px;
+    width: 25%;
+    justify-content: flex-end;
+}
+
+/* User Avatar */
+.user-info img {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    margin-left: 8px;
+}
+
+/* Username */
+.username {
+    font-weight: bold;
+    color: #9147ff;
+    margin-left: 4px;
+}
+
+/* Handle */
+.handle {
+    color: #aaaaaa;
+    margin-left: 2px;
+    font-size: 0.85em;
+}
+
+/* Timestamp */
+.timestamp {
+    color: #555555;
+    font-size: 0.75em;
+    margin-left: 6px;
+}

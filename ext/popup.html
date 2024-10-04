@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>X Stream Chat Settings</title>
+  <style>
+    body {
+      width: 300px;
+      padding: 20px;
+      font-family: Arial, sans-serif;
+      background-color: #000;
+      color: #fff;
+    }
+    h1 {
+      font-size: 18px;
+      margin-bottom: 15px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    input, select {
+      padding: 5px;
+      margin-bottom: 10px;
+      background-color: #333;
+      border: 1px solid #555;
+      color: #fff;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #333;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #444;
+    }
+    .toggle-container {
+      display: flex;
+      align-items: center;
+      margin-top: 10px;
+    }
+    .toggle-switch {
+      position: relative;
+      display: inline-block;
+      width: 60px;
+      height: 34px;
+    }
+    .toggle-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      transition: .4s;
+      border-radius: 34px;
+    }
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 26px;
+      width: 26px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      transition: .4s;
+      border-radius: 50%;
+    }
+    input:checked + .slider {
+      background-color: #525252;
+    }
+    input:checked + .slider:before {
+      transform: translateX(26px);
+    }
+    .toggle-label {
+      margin-left: 10px;
+    }
+    .input-row {
+      display: flex;
+      justify-content: space-between;
+    }
+    .input-row input {
+      width: 45%;
+    }
+    .checkbox-group {
+      margin-top: 10px;
+    }
+    .checkbox-group label {
+      display: inline-block;
+      margin-right: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+    <h1>X Stream Chat Settings</h1>
+    <div class="toggle-container" style="margin-top: 0px;">
+      <label class="toggle-switch">
+        <input type="checkbox" id="enableToggle">
+        <span class="slider"></span>
+      </label>
+    </div>
+  </div>
+  <form id="settingsForm">
+    <label for="font" style="width: 100%;">Server:</label>
+    <div class="input-row">
+      <input type="text" id="host" name="host" placeholder="Host" value="localhost" required>
+      <input type="number" id="port" name="port" placeholder="Port" value="8585" required>
+    </div>
+    
+    <label for="font">Font:</label>
+    <select id="font" name="font">
+      <option value="Arial" style="font-family: Arial;">Arial</option>
+      <option value="Helvetica" style="font-family: Helvetica;">Helvetica</option>
+      <option value="Times New Roman" style="font-family: 'Times New Roman';">Times New Roman</option>
+      <option value="Courier" style="font-family: Courier;">Courier</option>
+      <option value="Verdana" style="font-family: Verdana;">Verdana</option>
+    </select>
+
+    <label for="fontSize">Font Size:</label>
+    <input type="number" id="fontSize" name="fontSize" value="14" min="8" max="24">
+
+    <div class="checkbox-group">
+      <label><input type="checkbox" id="showPfp" name="showPfp" checked>PFP</label>
+      <label><input type="checkbox" id="showUsername" name="showUsername" checked> Username</label>
+      <label><input type="checkbox" id="showUserHandle" name="showUserHandle" checked>Handle</label>
+      <label><input type="checkbox" id="showDatetime" name="showDatetime" checked>Time</label>
+    </div>
+    
+    <button type="submit">Save</button>
+  </form>
+  <div id="statusMessage" style="display: none;"></div>
+  <script src="popup.js"></script>
+</body>
+</html>

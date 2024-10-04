@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>X Stream Chat Status</title>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+    <div class="container">
+        <h1>X Stream Chat Status</h1>
+        <div id="status-info">
+            <div class="status-item">
+                <span class="status-label">Server Uptime:</span>
+                <span id="server-uptime"></span>
+            </div>
+            <div class="status-item">
+                <span class="status-label">Connected Clients:</span>
+                <span id="connected-clients"></span>
+            </div>
+            <div class="status-item">
+                <span class="status-label">Total Messages Sent:</span>
+                <span id="total-messages"></span>
+            </div>
+            <div class="status-item">
+                <span class="status-label">Last Message Time:</span>
+                <span id="last-message-time"></span>
+            </div>
+        </div>
+        <h2>Connected Extensions</h2>
+        <div id="connected-extensions"></div>
+    </div>
+
+    <script>
+        function updateStatus() {
+            fetch('/api/status')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('server-uptime').textContent = formatUptime(data.serverUptime);
+                    document.getElementById('connected-clients').textContent = data.connectedClients;
+                    document.getElementById('total-messages').textContent = data.totalMessagesSent;
+                    document.getElementById('last-message-time').textContent = data.lastMessageTime ? new Date(data.lastMessageTime).toLocaleString() : 'N/A';
+                    
+                    const extensionsContainer = document.getElementById('connected-extensions');
+                    extensionsContainer.innerHTML = '';
+                    data.connectedExtensions.forEach(ext => {
+                        const extElement = document.createElement('div');
+                        extElement.className = 'extension-item';
+                        extElement.innerHTML = `
+                            <strong>${ext.name}</strong> (v${ext.version})<br>
+                            ID: ${ext.id}<br>
+                            Connected at: ${new Date(ext.connectedAt).toLocaleString()}
+                        `;
+                        extensionsContainer.appendChild(extElement);
+                    });
+                })
+                .catch(error => console.error('Error fetching status:', error));
+        }
+
+        function formatUptime(seconds) {
+            const days = Math.floor(seconds / (3600*24));
+            const hours = Math.floor(seconds % (3600*24) / 3600);
+            const minutes = Math.floor(seconds % 3600 / 60);
+            const secs = Math.floor(seconds % 60);
+
+            return `${days}d ${hours}h ${minutes}m ${secs}s`;
+        }
+
+        setInterval(updateStatus, 5000);
+        updateStatus();
+    </script>
+</body>
+</html>
