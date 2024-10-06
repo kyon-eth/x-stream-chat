@@ -1,0 +1,585 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>X Stream Chat</title>
+    <link rel="stylesheet" href="chat.css" />
+  </head>
+  <body>
+    <div class="video-container">
+      <div class="video-wrapper">
+        <video id="background-video" autoplay muted loop>
+          <source src="overlay-test-1.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        <!-- Chat Overlay -->
+        <!-- Chat Overlay -->
+        <div id="chat-overlay" class="chat-overlay">
+          <!-- Death Note Theme Messages (0:00 - 0:03) -->
+          <div
+            class="theme-wrapper death-note-wrapper"
+            data-start="2.0"
+            data-end="5.4"
+          >
+            <!-- Messages aligned to the right -->
+            <div class="message">
+              <span class="user-info">
+                <span class="username">Light</span>
+              </span>
+              <span class="message-text">i can change the world with this</span>
+            </div>
+            <div class="message">
+              <span class="user-info">
+                <span class="username">L</span>
+              </span>
+              <span class="message-text">kira is that you???</span>
+            </div>
+            <div class="message">
+              <span class="user-info">
+                <span class="username">Ryuk</span>
+              </span>
+              <span class="message-text">humans are so interesting</span>
+            </div>
+          </div>
+
+          <!-- Hunter x Hunter Theme Messages (0:03 - 0:04) -->
+          <!-- <div
+            class="theme-wrapper hunter-wrapper"
+            data-start="6.0"
+            data-end="4.0"
+          >
+            <div class="message">
+              <span class="user-info">
+                <span class="username">gon</span>
+              </span>
+              <span class="message-text">ready for a new adventure</span>
+            </div>
+            <div class="message">
+              <span class="user-info">
+                <span class="username">killua</span>
+              </span>
+              <span class="message-text">only if theres choccy robots</span>
+            </div>
+            <div class="message">
+              <span class="user-info">
+                <span class="username">kurapika</span>
+              </span>
+              <span class="message-text">stay focused guys</span>
+            </div>
+          </div> -->
+
+          <!-- Jujutsu Kaisen Theme Messages (0:04 - 0:08) -->
+          <div
+            class="theme-wrapper jujutsu-wrapper"
+            data-start="5.2"
+            data-end="10"
+            style="top: auto; bottom: 10%; right: auto; left: 5%"
+          >
+            <!-- Messages aligned to the right -->
+            <div class="message">
+              <span class="user-info">
+                <span class="username">yuji</span>
+              </span>
+              <span class="message-text">is eating fingers normal</span>
+            </div>
+            <div class="message">
+              <span class="user-info">
+                <span class="username">megumi</span>
+              </span>
+              <span class="message-text">bruh dont ask me</span>
+            </div>
+            <div class="message">
+              <span class="user-info">
+                <span class="username">gojo</span>
+              </span>
+              <span class="message-text">its all about style</span>
+            </div>
+          </div>
+
+          <!-- Fire Force Theme Messages (0:08 - 0:15) -->
+          <div
+            class="theme-wrapper fire-force-wrapper"
+            data-start="10.2"
+            data-end="17.0"
+          >
+            <!-- Messages aligned to the left -->
+            <div class="message">
+              <span class="user-info">
+                <span class="username">shinra</span>
+              </span>
+              <span class="message-text">lets extinguish those flames</span>
+            </div>
+            <div class="message">
+              <span class="user-info">
+                <span class="username">arthur</span>
+              </span>
+              <span class="message-text">im the knight king</span>
+            </div>
+            <div class="message">
+              <span class="user-info">
+                <span class="username">maki</span>
+              </span>
+              <span class="message-text">focus boys</span>
+            </div>
+          </div>
+
+          <!-- Tokyo Ghoul Theme Messages (0:15 - 0:19) -->
+          <div
+            class="theme-wrapper tokyo-ghoul-wrapper"
+            data-start="17.2"
+            data-end="21.0"
+            style="right: auto; left: 5%"
+          >
+            <!-- Messages aligned to the right -->
+            <div class="message">
+              <span class="user-info">
+                <span class="username">kaneki</span>
+              </span>
+              <span class="message-text">i cant control it anymore</span>
+            </div>
+            <div class="message">
+              <span class="user-info">
+                <span class="username">touka</span>
+              </span>
+              <span class="message-text">hang in there kaneki</span>
+            </div>
+            <div class="message">
+              <span class="user-info">
+                <span class="username">tsukiyama</span>
+              </span>
+              <span class="message-text">such exquisite aroma</span>
+            </div>
+          </div>
+
+          <!-- Hunter x Hunter Theme Messages (0:19 - 0:20) -->
+          <div
+            class="theme-wrapper hunter-wrapper"
+            data-start="21.3"
+            data-end="22.0"
+            style="top: auto; bottom: 10%"
+          >
+            <!-- Messages aligned to the left -->
+            <div class="message">
+              <span class="user-info">
+                <span class="username">gon</span>
+              </span>
+              <span class="message-text">time for another mission</span>
+            </div>
+            <div class="message">
+              <span class="user-info">
+                <span class="username">killua</span>
+              </span>
+              <span class="message-text">lets make it quick</span>
+            </div>
+            <div class="message">
+              <span class="user-info">
+                <span class="username">kurapika</span>
+              </span>
+              <span class="message-text">stay alert</span>
+            </div>
+          </div>
+
+          <!-- Demon Slayer Theme Messages (0:20 - 0:32) -->
+          <div
+            class="theme-wrapper demon-slayer-wrapper"
+            data-start="22.1"
+            data-end="33.0"
+          >
+            <!-- Messages aligned to the left -->
+            <div class="message">
+              <img
+                class="user-pfp"
+                src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAMCAgICAgMCAgIDAwMDBAYEBAQEBAgGBgUGCQgKCgkICQkKDA8MCgsOCwkJDRENDg8QEBEQCgwSExIQEw8QEBD/2wBDAQMDAwQDBAgEBAgQCwkLEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBD/wAARCAApACoDASIAAhEBAxEB/8QAGgAAAwADAQAAAAAAAAAAAAAABgcIAgQJBf/EAD0QAAIBAwIDBAUGDwEAAAAAAAECAwQFEQAGBxIhEyIxQQgUMlFhCRVCgZGxFiUzNDY3UmJxcnR1hbLBw//EABkBAAIDAQAAAAAAAAAAAAAAAAQGAwUHAf/EACoRAAEDAgUCBQUAAAAAAAAAAAECAxEABAUSITFBIoEUUWGh8HGRsdHx/9oADAMBAAIRAxEAPwBPV2+KL1IUdsOJX9pwfZT4Y8yen26NOBnAi7+kRuOWx0L09Fb6RVe53OWHnaBTnlWMdMuepGSAB78gamQ31ILnBBSgJG0kayYPmc8o+0Nroz6FG+rLs3gFUXKCGsqLvdL/AFVMsFvpPWaqd440YIgJCLhDzF5GCKOpJ8NILWGJYgJG9ahiWNO3QUdyNAOPn8pjUHydHA6ns8dvrdw7zqpY4uzaoW5JCCevXlSMDz6A50leN/yf192FYLhvHgvvC4XtLdC1VPYbkA8s8SKS4hkXxfAJAI6+A1U/DbfS7xv9St02HerRcLdEJRU3SoE7HmJXCOjGI5wwIQgqRhlGVJwufGvaMPEyLZkO4ZILmrpS+rT8wpKyQjmMKORyJOB1XvAv1UqRggvwoHFLTb16hXUqft87VJ3BHbdm3HwI3PaJrlZIo77FTVMm6FjE8FvpomV5IHlGGLswCLEgyXDZ6Y0ujwttgJEEwliHsO68jMvkSuTykjyycaQd23rbuH3GXcKUEkzbWl3Nc4JoYGPZoI62VY5gueXIUhcnyAGfDT+g4zbW7CPs5re68g5WNQoLDHiQTka49aZICBTzgd0y8la3FdRIkHjQCe8dvcyJsy67arrrd9v3S5wQJPS9jBcZu7GlzLc8LE/RjDxJFk9AGYk9SdVv6DPHCj2hdtz8PL23qsN6CTwCZSfVa6HDFWAIIyowcZ70I6Ea5wUVQ5p6unHRZY1J92VYH7s6dtj2Jfdn7Ch4jw7hpKmKSaKGqW31bGWFG/Iyg4Ug+0hIyOq9fEaYX7Q5SWzCuPrWfWl0u4SenQCSe9di9k8SuG23NvJbaO9rDmSSVlft5O+xye/IWdvflmJOT18gP7l3JtG41NVd75e7XXUgoJKo0gljWH1pFV1bBjExKyIhU8xC8gIAbmJi3aPCC2V+3YbxR+lY236qalNb6hd4ZA7RlecvH3isowckx8x8cgHpqbt2+kXuWx3eeh25xLuF/poC0SVcdOtOk37wVlzjwwTg/AarkM4gpRIKTO+hH7op248OM7g9wfyZoNfdkVM7XenneeL51rWaSXvNNDJKSwceDZWQMffg6IhW0rgPFA3I3VeRSVx5Y+GlPaLvzTT01aFKVcnbDoMLL18vcQxB+rRDHZ7R2a/juaPujuCVwF+GPhq5Uynmg7K7cUmBBHrpFajVlOsLK/KEIwQB4/Vrfs93vlxt67JskUkkdbUq6U0ZOWf9lRnAUnDFfeOmhqo9mP8Am/5o04MfrJ23/dIvuOpdkzUTC1OvpbmAYBjyO9WPtv5zsGzLNYrrQy0dTb6aChn5zzIxVACysOhyAcefkdR5xq4f1Nrv34SWyzmitV4eaSnULypzrIQQB9HK4YA4z1I6av2xfme4f6aL/aPU+ek1+gP+Wi/9NRpciCBvTRiWHtONOtnZABFR1STNb66OaaEns27yMPEeBH2aM0rNluiual0LAEqJZBj4Y8tC989uL+B15eiCM2tJCHzakoyhQ9RX/9k="
+              />
+
+              <div class="message-bar">
+                <span class="user-info">
+                  <span class="username">nezuko</span>
+                </span>
+                <span class="message-text">...</span>
+              </div>
+            </div>
+            <div class="message">
+              <img
+                class="user-pfp"
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACoAAAAqCAMAAADyHTlpAAAA+VBMVEUDCA0FDREDBQoGEBUECg4CAwgGDxMFDA8DBwsBAQYIDxcAAAQIERgGChAGDRQKEhrZyLMLFBwMFh5WHSvdyrXVw68RLSgNHCUPCw45LS4XFBW8q5smHBwfWjY3Q07ItqUcEw9bREFtUU02Ex8qJid3b2lAMjJKNzbIjz3MvaxbXmOSfnN4YVpyVlFwUSi6iDofTzFEPz4WGB5iSkeygjigbTAnDhhDUVtJWWWlkYOGdWkrNDM1JyiIYyx0ZjJMRSg8WDKoXymfeTU/FSKjoJ4pNzxhSCOCgYKrmYodPiePdTZZUSpKGiiTjY1OYDR1PSHNlj+aUSZMSy+nuyO5AAAD/0lEQVQ4y2WUCXsiKRCGAaFpaKi2PeJ9xlujiZNkc9/JnHv+/x+zVbTO+OyWAt34UvVVATIpWTAc9o/B4ng3KhEM36UOkOY7MD7AaSoWByjNaY5oDKXMenInw/d/qMRZRLXWcVZCSzMcMi9RAkXYofFeo0SQM1tyPs1KWViRZSlG2KNxrgfVajKZeYUSSjygJerTWDICD1HsGIDxGB58KUeJBcb2SnMWvWJSTsQZhlWWKPyk9PYfAYFlniubpSlTGSFAHTbIfYb0saw5agXmlFojCXUxcila5gO5Q4NXCV44/EkaIAQUvriUur1TRDUV2oONgVBBTJp6A0g5evYhJ8obQ0vASS+xc1YxGlJmfOogdRY9M0qKJFJ4D84yC5ZQfMRBGJZaXOVpuURUB1QHGICmQVm3dXbbTkR49hBi+eBV015JBlYEGbEdNaydDOrGcgOOM2eBc+5zFE8V846hD5c1ZTqYwPbTScOANBw9g8vzJ5QTii6Ec4XRHW+cNGByMhzUpTc+pOnZT5RzrKoy0tms0czQ4XY6PVlNmxPBHBgFllHx8eSh00iCMBjNTYftBqKNwXLeW00+NYXjxjBH+6mDVu4hNrjabaeDu8FwNR2sluPxp7tJUzmJP1iIdTjPKACYUQqLMzq7rTdX18Ob5aILdjFuG4s+DLNsh6LXmOHuOTb9/a3bbV0vq5XifHH1dtNOMAU08FSlXGvEtfKQjIbjt7dqa14sznu9VmvZTnxAY9ihSEZcKi6S5vC6WixWsZFVeneJIFIZf4BGUjGTiGWl+AstVicJkUYIJYliHADRGBMzybhSPLBqI0cV3nONDF6+CL/CyNgko15wuxPQaichvMEqeXSLKBQKkYojIUxyhmz1SwvhSqU3CE4FM8LSkSnkKI95JLRBtlUp9rAElWJrdZfHN8KD5FHwGkUFkqtxE5UYfamgiMr8ZjhsqBw10kLQimBUQAlRQRulddIczyvV67OzxeIqzbPCCwNAFSAuN21YhK2w+Dz+Da37XmeKNHiHFwTjshyjBZqholj67lV3tMWLavr9ZpNgPPd4ofgejajhBgslule3IaF6++Pl5SNKEgUgo8iznyT2un4plLrtjmhDVP9jc/78/fRIJMpirYIAV8gF6/7rZV3hecSmTH99/7L+87bT+VrAM8sLhQOv/rL8enxsVL1PJPv69HiEdtrpdI6wBtEvNPLH5fJx+VWpeh0PCBx1ni5y9umPh4e+9LsKIFl/LZO1rRKQQVo77ayfXx7/WT98P5/N/lr3YecVo+fkj1otq9VKtff306e/nzfn5xf3pw+z2Wxz347wfylkdBnI8nEtt8833zYXF5vNxfO60/k2m53fP8p/AWypYtU1vibtAAAAAElFTkSuQmCC"
+              />
+              <div class="message-bar">
+                <span class="user-info">
+                  <span class="username">tanjiro</span>
+                </span>
+                <span class="message-text">stay safe nezuko</span>
+              </div>
+            </div>
+            <div class="message">
+              <img
+                class="user-pfp"
+                src="data:image/png;base64,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"
+              />
+              <div class="message-bar">
+                <span class="user-info">
+                  <span class="username">giyu</span>
+                </span>
+                <span class="message-text">the journey continues</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Jujutsu Kaisen Theme Messages (0:32 - 0:36) -->
+          <div
+            class="theme-wrapper jujutsu-wrapper"
+            data-start="33.5"
+            data-end="38.2"
+          >
+            <!-- Messages aligned to the right -->
+            <div class="message">
+              <span class="user-info">
+                <span class="username">yuji</span>
+              </span>
+              <span class="message-text">lets exorcise some curses</span>
+            </div>
+            <div class="message">
+              <span class="user-info">
+                <span class="username">megumi</span>
+              </span>
+              <span class="message-text">stay sharp</span>
+            </div>
+            <div class="message">
+              <span class="user-info">
+                <span class="username">gojo</span>
+              </span>
+              <span class="message-text">confidence is key</span>
+            </div>
+          </div>
+
+          <!-- Death Note Theme Messages (0:36 - 0:38) -->
+          <!-- <div
+            class="theme-wrapper death-note-wrapper"
+            data-start="37.9"
+            data-end="39.5"
+          >
+            <div class="message">
+              <span class="user-info">
+                <span class="username">light</span>
+              </span>
+              <span class="message-text">justice will prevail</span>
+            </div>
+            <div class="message">
+              <span class="user-info">
+                <span class="username">l</span>
+              </span>
+              <span class="message-text">well see about that</span>
+            </div>
+            <div class="message">
+              <span class="user-info">
+                <span class="username">ryuk</span>
+              </span>
+              <span class="message-text">this is getting interesting</span>
+            </div>
+          </div> -->
+
+          <!-- Frieren Theme Messages (0:38 - 0:40) -->
+          <div
+            class="theme-wrapper frieren-wrapper"
+            data-start="38.4"
+            data-end="40.6"
+            style="bottom: 5%; top: auto"
+          >
+            <!-- Messages aligned to the left -->
+            <div class="message">
+              <span class="user-info">
+                <span class="username">frieren</span>
+              </span>
+              <span class="message-text">time flows differently</span>
+            </div>
+            <div class="message">
+              <span class="user-info">
+                <span class="username">hana</span>
+              </span>
+              <span class="message-text">cherish every moment</span>
+            </div>
+            <div class="message">
+              <span class="user-info">
+                <span class="username">efreet</span>
+              </span>
+              <span class="message-text">wisdom comes with age</span>
+            </div>
+          </div>
+
+          <!-- Dan Da Dan Theme Messages (0:40 - 0:41) -->
+          <div
+            class="theme-wrapper dan-da-dan-wrapper"
+            data-start="40.7"
+            data-end="43.2"
+          >
+            <!-- Messages aligned to the right -->
+            <div class="message">
+              <span class="user-info">
+                <span class="username">jin</span>
+              </span>
+              <span class="message-text">lets get to work</span>
+            </div>
+            <div class="message">
+              <span class="user-info">
+                <span class="username">nagare</span>
+              </span>
+              <span class="message-text">time is of the essence</span>
+            </div>
+            <div class="message">
+              <span class="user-info">
+                <span class="username">saya</span>
+              </span>
+              <span class="message-text">focus on the task</span>
+            </div>
+          </div>
+
+          <!-- One Piece Theme Messages (0:41 - 0:42) -->
+          <div
+            class="theme-wrapper one-piece-wrapper"
+            data-start="43.4"
+            data-end="44.5"
+            style="bottom: 5%; top: auto"
+          >
+            <!-- Messages aligned to the left -->
+            <div class="message">
+              <span class="user-info">
+                <span class="username">luffy</span>
+              </span>
+              <span class="message-text">im gonna be king of the pirates</span>
+            </div>
+            <div class="message">
+              <span class="user-info">
+                <span class="username">zoro</span>
+              </span>
+              <span class="message-text">ill protect my captain</span>
+            </div>
+            <div class="message">
+              <span class="user-info">
+                <span class="username">nami</span>
+              </span>
+              <span class="message-text"
+                >navigating through the grand line</span
+              >
+            </div>
+          </div>
+
+          <!-- Hunter x Hunter Theme Messages (0:42 - 0:43) -->
+          <div
+            class="theme-wrapper hunter-wrapper"
+            data-start="44.7"
+            data-end="45.2"
+          >
+            <!-- Messages aligned to the left -->
+            <div class="message">
+              <span class="user-info">
+                <span class="username">gon</span>
+              </span>
+              <span class="message-text">were getting closer</span>
+            </div>
+            <div class="message">
+              <span class="user-info">
+                <span class="username">killua</span>
+              </span>
+              <span class="message-text">keep pushing forward</span>
+            </div>
+            <div class="message">
+              <span class="user-info">
+                <span class="username">kurapika</span>
+              </span>
+              <span class="message-text">eyes on the prize</span>
+            </div>
+          </div>
+
+          <!-- Jujutsu Kaisen Theme Messages (0:43 - 0:44) -->
+          <div
+            class="theme-wrapper jujutsu-wrapper"
+            data-start="46.0"
+            data-end="44.0"
+          >
+            <!-- Messages aligned to the right -->
+            <div class="message">
+              <span class="user-info">
+                <span class="username">yuji</span>
+              </span>
+              <span class="message-text">time to face our fears</span>
+            </div>
+            <div class="message">
+              <span class="user-info">
+                <span class="username">megumi</span>
+              </span>
+              <span class="message-text">stay strong</span>
+            </div>
+            <div class="message">
+              <span class="user-info">
+                <span class="username">gojo</span>
+              </span>
+              <span class="message-text">confidence is everything</span>
+            </div>
+          </div>
+
+          <!-- Hunter x Hunter Theme Messages (0:43 - 0:44) -->
+          <!-- <div
+            class="theme-wrapper hunter-wrapper"
+            data-start="43.0"
+            data-end="44.0"
+          >
+            <div class="message">
+              <span class="user-info">
+                <span class="username">gon</span>
+              </span>
+              <span class="message-text">lets finish this quest</span>
+            </div>
+            <div class="message">
+              <span class="user-info">
+                <span class="username">killua</span>
+              </span>
+              <span class="message-text">no turning back now</span>
+            </div>
+            <div class="message">
+              <span class="user-info">
+                <span class="username">kurapika</span>
+              </span>
+              <span class="message-text">stay vigilant</span>
+            </div>
+          </div> -->
+
+          <!-- Death Note Theme Messages (0:44 - 0:46) -->
+          <div
+            class="theme-wrapper death-note-wrapper"
+            data-start="45.5"
+            data-end="47.38"
+          >
+            <!-- Messages aligned to the right -->
+            <div class="message">
+              <span class="user-info">
+                <span class="username">light</span>
+              </span>
+              <span class="message-text">the plan is unfolding perfectly</span>
+            </div>
+            <div class="message">
+              <span class="user-info">
+                <span class="username">l</span>
+              </span>
+              <span class="message-text">well see whos really in control</span>
+            </div>
+            <div class="message">
+              <span class="user-info">
+                <span class="username">ryuk</span>
+              </span>
+              <span class="message-text">this is getting intense</span>
+            </div>
+          </div>
+
+          <!-- Shingeki no Kyojin Theme Messages (0:46 - 0:50) -->
+          <div
+            class="theme-wrapper shingeki-wrapper"
+            data-start="47.45"
+            data-end="53.1"
+          >
+            <!-- Messages aligned to the left -->
+            <div class="message">
+              <span class="user-info">
+                <span class="username">eren</span>
+              </span>
+              <span class="message-text">we wont back down</span>
+            </div>
+            <div class="message">
+              <span class="user-info">
+                <span class="username">mikasa</span>
+              </span>
+              <span class="message-text">stay strong eren</span>
+            </div>
+            <div class="message">
+              <span class="user-info">
+                <span class="username">levi</span>
+              </span>
+              <span class="message-text">prepare for battle</span>
+            </div>
+          </div>
+
+          <!-- Demon Slayer Theme Messages (0:50 - End) -->
+          <div
+            class="theme-wrapper demon-slayer-wrapper"
+            data-start="53.2"
+            data-end="9999.0"
+          >
+            <!-- Messages aligned to the left -->
+            <div class="message">
+              <img
+                class="user-pfp"
+                src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAMCAgICAgMCAgIDAwMDBAYEBAQEBAgGBgUGCQgKCgkICQkKDA8MCgsOCwkJDRENDg8QEBEQCgwSExIQEw8QEBD/2wBDAQMDAwQDBAgEBAgQCwkLEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBD/wAARCAApACoDASIAAhEBAxEB/8QAGgAAAwADAQAAAAAAAAAAAAAABgcIAgQJBf/EAD0QAAIBAwIDBAUGDwEAAAAAAAECAwQFEQAGBxIhEyIxQQgUMlFhCRVCgZGxFiUzNDY3UmJxcnR1hbLBw//EABkBAAIDAQAAAAAAAAAAAAAAAAQGAwUHAf/EACoRAAEDAgUCBQUAAAAAAAAAAAECAxEABAUSITFBIoEUUWGh8HGRsdHx/9oADAMBAAIRAxEAPwBPV2+KL1IUdsOJX9pwfZT4Y8yen26NOBnAi7+kRuOWx0L09Fb6RVe53OWHnaBTnlWMdMuepGSAB78gamQ31ILnBBSgJG0kayYPmc8o+0Nroz6FG+rLs3gFUXKCGsqLvdL/AFVMsFvpPWaqd440YIgJCLhDzF5GCKOpJ8NILWGJYgJG9ahiWNO3QUdyNAOPn8pjUHydHA6ns8dvrdw7zqpY4uzaoW5JCCevXlSMDz6A50leN/yf192FYLhvHgvvC4XtLdC1VPYbkA8s8SKS4hkXxfAJAI6+A1U/DbfS7xv9St02HerRcLdEJRU3SoE7HmJXCOjGI5wwIQgqRhlGVJwufGvaMPEyLZkO4ZILmrpS+rT8wpKyQjmMKORyJOB1XvAv1UqRggvwoHFLTb16hXUqft87VJ3BHbdm3HwI3PaJrlZIo77FTVMm6FjE8FvpomV5IHlGGLswCLEgyXDZ6Y0ujwttgJEEwliHsO68jMvkSuTykjyycaQd23rbuH3GXcKUEkzbWl3Nc4JoYGPZoI62VY5gueXIUhcnyAGfDT+g4zbW7CPs5re68g5WNQoLDHiQTka49aZICBTzgd0y8la3FdRIkHjQCe8dvcyJsy67arrrd9v3S5wQJPS9jBcZu7GlzLc8LE/RjDxJFk9AGYk9SdVv6DPHCj2hdtz8PL23qsN6CTwCZSfVa6HDFWAIIyowcZ70I6Ea5wUVQ5p6unHRZY1J92VYH7s6dtj2Jfdn7Ch4jw7hpKmKSaKGqW31bGWFG/Iyg4Ug+0hIyOq9fEaYX7Q5SWzCuPrWfWl0u4SenQCSe9di9k8SuG23NvJbaO9rDmSSVlft5O+xye/IWdvflmJOT18gP7l3JtG41NVd75e7XXUgoJKo0gljWH1pFV1bBjExKyIhU8xC8gIAbmJi3aPCC2V+3YbxR+lY236qalNb6hd4ZA7RlecvH3isowckx8x8cgHpqbt2+kXuWx3eeh25xLuF/poC0SVcdOtOk37wVlzjwwTg/AarkM4gpRIKTO+hH7op248OM7g9wfyZoNfdkVM7XenneeL51rWaSXvNNDJKSwceDZWQMffg6IhW0rgPFA3I3VeRSVx5Y+GlPaLvzTT01aFKVcnbDoMLL18vcQxB+rRDHZ7R2a/juaPujuCVwF+GPhq5Uynmg7K7cUmBBHrpFajVlOsLK/KEIwQB4/Vrfs93vlxt67JskUkkdbUq6U0ZOWf9lRnAUnDFfeOmhqo9mP8Am/5o04MfrJ23/dIvuOpdkzUTC1OvpbmAYBjyO9WPtv5zsGzLNYrrQy0dTb6aChn5zzIxVACysOhyAcefkdR5xq4f1Nrv34SWyzmitV4eaSnULypzrIQQB9HK4YA4z1I6av2xfme4f6aL/aPU+ek1+gP+Wi/9NRpciCBvTRiWHtONOtnZABFR1STNb66OaaEns27yMPEeBH2aM0rNluiual0LAEqJZBj4Y8tC989uL+B15eiCM2tJCHzakoyhQ9RX/9k="
+              />
+
+              <div class="message-bar">
+                <span class="user-info">
+                  <span class="username">nezuko</span>
+                </span>
+                <span class="message-text">...</span>
+              </div>
+            </div>
+            <div class="message">
+              <img
+                class="user-pfp"
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACoAAAAqCAMAAADyHTlpAAAA+VBMVEUDCA0FDREDBQoGEBUECg4CAwgGDxMFDA8DBwsBAQYIDxcAAAQIERgGChAGDRQKEhrZyLMLFBwMFh5WHSvdyrXVw68RLSgNHCUPCw45LS4XFBW8q5smHBwfWjY3Q07ItqUcEw9bREFtUU02Ex8qJid3b2lAMjJKNzbIjz3MvaxbXmOSfnN4YVpyVlFwUSi6iDofTzFEPz4WGB5iSkeygjigbTAnDhhDUVtJWWWlkYOGdWkrNDM1JyiIYyx0ZjJMRSg8WDKoXymfeTU/FSKjoJ4pNzxhSCOCgYKrmYodPiePdTZZUSpKGiiTjY1OYDR1PSHNlj+aUSZMSy+nuyO5AAAD/0lEQVQ4y2WUCXsiKRCGAaFpaKi2PeJ9xlujiZNkc9/JnHv+/x+zVbTO+OyWAt34UvVVATIpWTAc9o/B4ng3KhEM36UOkOY7MD7AaSoWByjNaY5oDKXMenInw/d/qMRZRLXWcVZCSzMcMi9RAkXYofFeo0SQM1tyPs1KWViRZSlG2KNxrgfVajKZeYUSSjygJerTWDICD1HsGIDxGB58KUeJBcb2SnMWvWJSTsQZhlWWKPyk9PYfAYFlniubpSlTGSFAHTbIfYb0saw5agXmlFojCXUxcila5gO5Q4NXCV44/EkaIAQUvriUur1TRDUV2oONgVBBTJp6A0g5evYhJ8obQ0vASS+xc1YxGlJmfOogdRY9M0qKJFJ4D84yC5ZQfMRBGJZaXOVpuURUB1QHGICmQVm3dXbbTkR49hBi+eBV015JBlYEGbEdNaydDOrGcgOOM2eBc+5zFE8V846hD5c1ZTqYwPbTScOANBw9g8vzJ5QTii6Ec4XRHW+cNGByMhzUpTc+pOnZT5RzrKoy0tms0czQ4XY6PVlNmxPBHBgFllHx8eSh00iCMBjNTYftBqKNwXLeW00+NYXjxjBH+6mDVu4hNrjabaeDu8FwNR2sluPxp7tJUzmJP1iIdTjPKACYUQqLMzq7rTdX18Ob5aILdjFuG4s+DLNsh6LXmOHuOTb9/a3bbV0vq5XifHH1dtNOMAU08FSlXGvEtfKQjIbjt7dqa14sznu9VmvZTnxAY9ihSEZcKi6S5vC6WixWsZFVeneJIFIZf4BGUjGTiGWl+AstVicJkUYIJYliHADRGBMzybhSPLBqI0cV3nONDF6+CL/CyNgko15wuxPQaichvMEqeXSLKBQKkYojIUxyhmz1SwvhSqU3CE4FM8LSkSnkKI95JLRBtlUp9rAElWJrdZfHN8KD5FHwGkUFkqtxE5UYfamgiMr8ZjhsqBw10kLQimBUQAlRQRulddIczyvV67OzxeIqzbPCCwNAFSAuN21YhK2w+Dz+Da37XmeKNHiHFwTjshyjBZqholj67lV3tMWLavr9ZpNgPPd4ofgejajhBgslule3IaF6++Pl5SNKEgUgo8iznyT2un4plLrtjmhDVP9jc/78/fRIJMpirYIAV8gF6/7rZV3hecSmTH99/7L+87bT+VrAM8sLhQOv/rL8enxsVL1PJPv69HiEdtrpdI6wBtEvNPLH5fJx+VWpeh0PCBx1ni5y9umPh4e+9LsKIFl/LZO1rRKQQVo77ayfXx7/WT98P5/N/lr3YecVo+fkj1otq9VKtff306e/nzfn5xf3pw+z2Wxz347wfylkdBnI8nEtt8833zYXF5vNxfO60/k2m53fP8p/AWypYtU1vibtAAAAAElFTkSuQmCC"
+              />
+              <div class="message-bar">
+                <span class="user-info">
+                  <span class="username">tanjiro</span>
+                </span>
+                <span class="message-text">stay safe nezuko</span>
+              </div>
+            </div>
+            <div class="message">
+              <img
+                class="user-pfp"
+                src="data:image/png;base64,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"
+              />
+              <div class="message-bar">
+                <span class="user-info">
+                  <span class="username">giyu</span>
+                </span>
+                <span class="message-text">the journey continues</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const video = document.getElementById("background-video");
+      const themeWrappers = document.querySelectorAll(".theme-wrapper");
+
+      function updateChat() {
+        const currentTime = video.currentTime;
+
+        themeWrappers.forEach((wrapper) => {
+          const start = parseFloat(wrapper.dataset.start);
+          const end = parseFloat(wrapper.dataset.end);
+
+          if (currentTime >= start && currentTime <= end) {
+            wrapper.style.display = "flex";
+            const messages = wrapper.querySelectorAll(".message");
+            messages.forEach((message, index) => {
+              setTimeout(() => {
+                message.style.display = "block";
+              }, index * 300); // Show each message with a 500ms delay
+            });
+          } else {
+            wrapper.style.display = "none";
+            wrapper.querySelectorAll(".message").forEach((message) => {
+              message.style.display = "none";
+            });
+          }
+        });
+      }
+
+      video.addEventListener("timeupdate", updateChat);
+      video.addEventListener("seeked", updateChat);
+
+      // Initialize chat visibility and theme
+      updateChat();
+    </script>
+  </body>
+</html>

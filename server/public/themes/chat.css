@@ -1,0 +1,491 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow: hidden;
+    background-color: black;
+    color: #fff;
+}
+
+/* Video Container */
+.video-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px; /* Fat padding */
+    height: 100vh;
+    box-sizing: border-box;
+}
+
+.video-wrapper {
+    position: relative;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+#background-video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Scales video to fit while preserving aspect ratio */
+    display: block;
+}
+
+/* Chat Overlay */
+#chat-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Allows interacting with the video controls */
+}
+
+/* General Theme Wrapper Styles */
+.theme-wrapper {
+    position: absolute;
+    top: 10%;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    /* opacity: 0; */
+    /* Visibility will be controlled via JavaScript */
+}
+
+/* Alignment for Left or Right */
+.death-note-wrapper,
+.jujutsu-wrapper,
+.tokyo-ghoul-wrapper,
+.one-piece-wrapper,
+.shingeki-wrapper {
+    right: 5%;
+}
+
+.hunter-wrapper,
+.fire-force-wrapper,
+.demon-slayer-wrapper,
+.frieren-wrapper,
+.dan-da-dan-wrapper {
+    left: 5%;
+}
+
+/* General Message Styles */
+.message {
+    /* display: none; Hidden by default */
+    background-color: rgba(0, 0, 0, 0.5); /* Default background */
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+    align-items: center;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.theme-wrapper .message:last-child {
+    margin-bottom: 0px !important;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+}
+
+.user-info img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+.username {
+    font-weight: bold;
+    color: #9147ff; /* Default username color, overridden by themes */
+    margin-right: 5px;
+}
+
+.message-text {
+    flex: 1;
+    margin-left: 10px;
+    font-size: 1rem;
+    /* Text color overridden by themes */
+}
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Theme-Specific Styles */
+
+/* Death Note Theme */
+.death-note-wrapper {
+    background-color: rgba(0, 0, 0, 0.7); /* Full background */
+    padding: 5px;
+    border-radius: 0px;
+}
+
+.death-note-wrapper .message {
+    padding: 4px;
+    margin-bottom: 5px;
+    border-radius: 0px;
+    border: 1px solid #3d3d3d;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.death-note-wrapper .username {
+    color: #fff;
+    font-size: 10px;
+    margin-left: 3px;
+    font-family: monospace;
+    font-style: italic;
+    text-transform: uppercase;
+}
+
+.death-note-wrapper .message-text {
+    color: #ccc;
+    font-size: 12px;
+}
+
+/* Hunter x Hunter Theme */
+.hunter-wrapper {
+    background: #1b2c1769;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.hunter-wrapper .message {
+    display: flex !important;
+    border-radius: 0px;
+    margin-bottom: 0 !important;
+    padding: 3px 0;
+    background: none;
+}
+
+.hunter-wrapper .user-info {
+    background: #1b2c17ad;
+    display: block;
+    width: 25%;
+    text-align: right;
+}
+
+.hunter-wrapper .username {
+    color: #a3bd9b;
+    font-weight: bold;
+    font-family: sans-serif;
+    font-size: 12px;
+    line-height: 16px;
+}
+
+.hunter-wrapper .message-text {
+    color: #ecf0f1;
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    line-height: 17px;
+}
+
+/* Jujutsu Kaisen Theme */
+.jujutsu-wrapper {
+    background-color: rgb(9 17 25);
+    padding: 3px;
+    border-radius: 10px;
+}
+
+.jujutsu-wrapper .message {
+    display: block;
+    background: none;
+    padding: 10px 6px 6px 6px;
+    margin-bottom: 0;
+}
+
+.jujutsu-wrapper .user-info {
+    display: flex;
+    align-items: center;
+    background: #3f0c07;
+}
+
+.jujutsu-wrapper .username {
+    color: #b4a27d;
+    font-size: 15px;
+    line-height: 22px;
+    padding-left: 4px;
+}
+
+.jujutsu-wrapper .message-text {
+    color: #c6d18a;
+    margin-left: 0px;
+    font-size: 12px;
+    margin-left: 4px;
+}
+
+/* Fire Force Theme */
+.fire-force-wrapper {
+    background: #301b07;
+    border: 2px solid #672707;
+    padding: 0px;
+    border-radius: 0;
+}
+
+.fire-force-wrapper .message {
+    display: flex !important;
+    border-bottom: 2px solid #5e2304;
+    border-radius: 0px;
+    margin-bottom: 0 !important;
+}
+
+.fire-force-wrapper .user-info {
+    display: block;
+    width: 25%;
+    text-align: right;
+}
+
+.fire-force-wrapper .message:last-child {
+    border-bottom: none;
+}
+
+.fire-force-wrapper .username {
+    color: #fd7914;
+}
+
+.fire-force-wrapper .message-text {
+    color: #ffe94a;
+    font-family: sans-serif;
+    font-size: 14px;
+}
+
+/* Tokyo Ghoul Theme */
+.tokyo-ghoul-wrapper {
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 4px;
+    border-radius: 4px;
+}
+
+.tokyo-ghoul-wrapper .message {
+    display: block;
+    background-color: rgb(127 127 127 / 50%);
+    border-radius: 4px;
+    padding: 5px;
+    margin-bottom: 4px;
+    text-align: right;
+}
+
+.tokyo-ghoul-wrapper .user-info {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.tokyo-ghoul-wrapper .username {
+    color: #b91f2f;
+    font-size: 14px;
+    font-weight: 100;
+    margin-right: 0;
+}
+
+.tokyo-ghoul-wrapper .message-text {
+    color: #000000;
+    font-weight: 100;
+    font-size: 14px;
+    text-align: right;
+}
+
+/* Demon Slayer Theme */
+/* Enhanced Demon Slayer Theme */
+.demon-slayer-wrapper {
+    /* background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(245, 245, 245, 0.8), rgba(240, 240, 240, 0.8));
+    padding: 12px;
+    border-radius: 8px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(185, 31, 47, 0.3); */
+    background: none;
+}
+
+.demon-slayer-wrapper .message {
+    display: flex !important;
+    background: radial-gradient(circle, rgba(127, 127, 127, 0.6), rgba(80, 80, 80, 0.4));
+    border-radius: 8px;
+    padding: 8px;
+    margin-bottom: 8px;
+    position: relative;
+}
+
+.demon-slayer-wrapper .message::before {
+    border-left: 10px solid transparent;
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: -20px;
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-right: 10px solid rgb(127 127 127 / 22%);
+    border-bottom: 10px solid transparent;
+}
+
+.demon-slayer-wrapper .message-bar {
+    margin-left: 6px;
+}
+
+.demon-slayer-wrapper .user-pfp {
+    width: 42px;
+    size: 42px;
+    border-radius: 4px;
+}
+
+.demon-slayer-wrapper .user-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 4px;
+}
+
+.demon-slayer-wrapper .username {
+    color: #ffa747;
+    font-size: 13px;
+    font-weight: bold;
+    text-shadow: 2px 2px 0px rgb(0 0 0 / 46%);
+}
+
+.demon-slayer-wrapper .message-text {
+    color: #ffffff;
+    font-weight: 300;
+    font-size: 14px;
+    text-align: right;
+    margin-left: 0px;
+    line-height: 1.4;
+    word-wrap: break-word;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+
+
+/* Frieren Theme */
+.frieren-wrapper {
+    border: 2px solid #87CEFA; /* Light sky blue border */
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.frieren-wrapper .username {
+    color: #1E90FF; /* Dodger blue */
+}
+
+.frieren-wrapper .message-text {
+    color: #FFFFFF; /* White */
+}
+
+/* Dan Da Dan Theme */
+.dan-da-dan-wrapper {
+    padding: 0px;
+}
+
+.dan-da-dan-wrapper .message {
+    display: flex !important;
+    border-radius: 0px;
+    margin-bottom: 0 !important;
+    font-style: italic;
+    text-transform: uppercase;
+    padding: 0px 0px 4px 0px;
+    background: none;
+}
+
+.dan-da-dan-wrapper .user-info {
+    display: block;
+    width: 25%;
+    text-align: right;
+    background: #a01f34;
+}
+
+.dan-da-dan-wrapper .message:last-child {
+    border-bottom: none;
+}
+
+.dan-da-dan-wrapper .username {
+    color: #ffffff;
+    font-size: 10px;
+    line-height: 12px;
+}
+
+.dan-da-dan-wrapper .message-text {
+    color: #ffffff;
+    font-family: sans-serif;
+    font-size: 12px;
+    line-height: 20px;
+    background: #000;
+    padding-left: 3px;
+}
+
+/* One Piece Theme */
+.one-piece-wrapper {
+    border-radius: 6px;
+}
+
+.one-piece-wrapper .message {
+    display: block;
+    background: rgb(163 129 80 / 87%);
+    border-radius: 6px;
+    margin-bottom: 4px;
+    border: 2px solid rgb(64 44 4);
+}
+
+.one-piece-wrapper .username {
+    color: #ffe4c2;
+    font-size: 14px;
+    text-shadow: 1px 1px #000000;
+    font-family: sans-serif;
+}
+
+.one-piece-wrapper .message-text {
+    color: #FFFFFF;
+    margin-left: 0;
+    font-size: 13px;
+    text-shadow: 1px 1px black;
+}
+
+/* Attack on Titan Theme */
+.shingeki-wrapper {
+    background: none;
+    padding: 0;
+    border-radius: 0px;
+}
+
+.shingeki-wrapper .message {
+    display: block;
+    background: linear-gradient(to right, rgb(0 0 0 / 93%), rgba(0, 0, 0, 0));
+    border-radius: 0;
+    border-left: 4px solid #343433;
+    margin-bottom: 6px;
+    padding: 4px;
+    padding-bottom: 6px;
+    padding-left: 6px;
+}
+
+.shingeki-wrapper .username {
+    font-weight: bold;
+    color: #878759;
+    font-size: 12px;
+    margin-right: 5px;
+}
+
+.shingeki-wrapper .message-text {
+    color: #F5F5F5;
+    margin-left: 0;
+    font-size: 12px;
+}
+
+/* Combined Theme for Jujutsu Kaisen and Hunter x Hunter */
+.combo-wrapper {
+    background: linear-gradient(45deg, rgba(34, 139, 34, 0.7), rgba(30, 30, 30, 0.9));
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.combo-wrapper .username {
+    color: #FFD700; /* Gold */
+}
+
+.combo-wrapper .message-text {
+    color: #E0FFFF; /* Light cyan */
+}
